@@ -42,8 +42,12 @@ public class Encryptor
         int index = 0;
         if (str.length() > numRows * numCols)
         {
-            int difference = (numRows * numCols) - str.length();
-            str = str.substring(0, (str.length() - 1) - difference);
+            int difference = (numRows * numCols) - str.length() - 1;
+            if (numRows * numCols < str.length())
+            {
+                difference = str.length() - 1 - numRows * numCols;
+            }
+            str = str.substring(0, str.length() - 1 - difference);
         }
         for (int r = 0; r < letterBlock.length; r++)
         {
@@ -80,9 +84,9 @@ public class Encryptor
      *
      *  @return the encrypted message; if message is the empty string, returns the empty string
      */
-   // public String encryptMessage(String message)
+    public String encryptMessage(String message)
     {
-        /* to be implemented in part (c) */
+
     }
 
     /**  Decrypts an encrypted message. All filler 'A's that may have been
